@@ -1,0 +1,39 @@
+## <summary>Radarr daemon.</summary>
+
+########################################
+## <summary>
+##      Execute sonarr service in the sonarr domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##      Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`sonarr_domtrans',`
+        gen_require(`
+                type sonarr_t, sonarr_exec_t;
+        ')
+
+        corecmd_search_bin($1)
+        domain_auto_trans($1, sonarr_exec_t, sonarr_t)
+')
+
+######################################
+## <summary>
+##      Execute sonarr in the caller domain.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`sonarr_exec',`
+        gen_require(`
+                type sonarr_exec_t;
+        ')
+
+        corecmd_search_bin($1)
+        can_exec($1, sonarr_exec_t)
+')

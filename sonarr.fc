@@ -1,0 +1,3 @@
+/usr/lib/sonarr/Radarr                      -- gen_context(system_u:object_r:sonarr_exec_t,s0)
+/usr/lib/sonarr/Radarr.Update/Radarr.Update -- gen_context(system_u:object_r:sonarr_exec_t,s0)
+/var/lib/sonarr(/.*)?                          gen_context(system_u:object_r:sonarr_var_lib_t,s0)
