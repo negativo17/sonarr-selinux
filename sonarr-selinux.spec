@@ -39,7 +39,7 @@ install -D -m 0644 %{modulename}.pp.bz2 %{buildroot}%{_datadir}/selinux/packages
 %post
 %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
 if %{_sbindir}/selinuxenabled ; then
-    %{_sbindir}/semanage port -a -t %{modulename}_port_t -p tcp 7878
+    %{_sbindir}/semanage port -a -t %{modulename}_port_t -p tcp 8989
 fi
 
 %postun
@@ -47,7 +47,7 @@ if [ $1 -eq 0 ]; then
     %selinux_modules_uninstall -s %{selinuxtype} %{modulename}
 fi
 if %{_sbindir}/selinuxenabled ; then
-    %{_sbindir}/semanage port -d -t %{modulename}_port_t -p tcp 7878
+    %{_sbindir}/semanage port -d -t %{modulename}_port_t -p tcp 8989
 fi
 
 %posttrans
